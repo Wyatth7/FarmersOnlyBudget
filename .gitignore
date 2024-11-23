@@ -1,8 +1,10 @@
-./../../FarmersOnlyBudget.Api/bin
-./../../FarmersOnlyBudget.Api/obj
+/FarmersOnlyBudget.Api/bin
+/FarmersOnlyBudget.Api/obj
 
-./../../FarmersOnlyBudget.Models/bin
-./../../FarmersOnlyBudget.Models/obj
+/FarmersOnlyBudget.Models/bin
+/FarmersOnlyBudget.Models/obj
 
-./../../FarmersOnlyBudget.Persistence/bin
-./../../FarmersOnlyBudget.Persistence/obj
+/FarmersOnlyBudget.Persistence/bin
+/FarmersOnlyBudget.Persistence/obj
+
+/.idea

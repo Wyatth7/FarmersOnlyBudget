@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FarmersOnlyBudget.Api", "FarmersOnlyBudget.Api\FarmersOnlyBudget.Api.csproj", "{9353CFD7-1644-4FD5-87D9-975D1E281638}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FarmersOnlyBudget.Persistence", "FarmersOnlyBudget.Persistence\FarmersOnlyBudget.Persistence.csproj", "{7C4820A8-D690-4CA3-B9EB-13AB2A84FA4C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FarmersOnlyBudget.Models", "FarmersOnlyBudget.Models\FarmersOnlyBudget.Models.csproj", "{1FBCCE0C-0BD3-42A0-A77B-1F81739B9076}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9353CFD7-1644-4FD5-87D9-975D1E281638}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9353CFD7-1644-4FD5-87D9-975D1E281638}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9353CFD7-1644-4FD5-87D9-975D1E281638}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9353CFD7-1644-4FD5-87D9-975D1E281638}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C4820A8-D690-4CA3-B9EB-13AB2A84FA4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C4820A8-D690-4CA3-B9EB-13AB2A84FA4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C4820A8-D690-4CA3-B9EB-13AB2A84FA4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C4820A8-D690-4CA3-B9EB-13AB2A84FA4C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1FBCCE0C-0BD3-42A0-A77B-1F81739B9076}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FBCCE0C-0BD3-42A0-A77B-1F81739B9076}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1FBCCE0C-0BD3-42A0-A77B-1F81739B9076}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1FBCCE0C-0BD3-42A0-A77B-1F81739B9076}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
