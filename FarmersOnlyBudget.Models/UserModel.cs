@@ -1,6 +1,6 @@
-namespace Persistence.Entities;
+namespace FarmersOnlyBudget.Models;
 
-public class UserEntity
+public class UserModel
 {
     public int UserId { get; set; }
 
@@ -15,6 +15,4 @@ public class UserEntity
     public string Email { get; set; } = string.Empty;
 
     public string Phone { get; set; } = string.Empty;
-
-    public ICollection<YearBudgetEntity> YearlyBudgets { get; set; } = [];
 }

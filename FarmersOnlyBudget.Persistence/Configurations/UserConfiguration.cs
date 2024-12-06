@@ -30,6 +30,11 @@ public class UserConfiguration : IEntityTypeConfiguration<UserEntity>
             .HasDefaultValue(string.Empty)
             .HasMaxLength(250)
             .IsRequired();
+
+        builder.Property(u => u.FirebaseId)
+            .HasDefaultValue(string.Empty)
+            .HasMaxLength(250)
+            .IsRequired();
         
         builder.Property(u => u.Phone)
             .HasDefaultValue(string.Empty)
@@ -39,5 +44,6 @@ public class UserConfiguration : IEntityTypeConfiguration<UserEntity>
         builder.HasIndex(u => u.NameFull);
         builder.HasIndex(u => u.Email);
         builder.HasIndex(u => u.Phone);
+        builder.HasIndex(u => u.FirebaseId);
     }
 }

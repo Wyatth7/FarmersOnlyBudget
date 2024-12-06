@@ -1,9 +1,11 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace WebApplication1.Controllers;
+namespace FarmersOnlyBudget.Api.Controllers;
 
 [Route("p/[controller]")]
-public class BaseApiController
+[Authorize]
+public class BaseApiController : Controller
 {
     
 }

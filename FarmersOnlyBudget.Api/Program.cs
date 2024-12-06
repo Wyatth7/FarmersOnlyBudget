@@ -1,15 +1,26 @@
-using System.Reflection;
+using FarmersOnlyBudget.Api.Security.Authentication;
+using FarmersOnlyBudget.Api.Services;
+using FirebaseAdmin;
+using Google.Apis.Auth.OAuth2;
 using Microsoft.EntityFrameworkCore;
 using Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+FirebaseApp.Create(new AppOptions
+{
+    Credential = await GoogleCredential.GetApplicationDefaultAsync(),
+    ProjectId = builder.Configuration["GoogleProjectId"],
+});
+
+builder.Services.AddAuthentication()
+    .AddScheme<FirebaseAuthSchemeOptions, FirebaseAuthSchemeHandler>(AuthenticationSchemes.Firebase, options => { });
+builder.Services.AddScoped<IAuthenticatedUserService, AuthenticatedUserService>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<BudgetDbContext>(optionsBuilder =>
 {
@@ -17,13 +28,13 @@ builder.Services.AddDbContext<BudgetDbContext>(optionsBuilder =>
         options => options.MigrationsAssembly("FarmersOnlyBudget.Api"));
 });
 
+builder.Services.AddTransient<IBudgetService, BudgetService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
 }
 
 app.UseHttpsRedirection();
