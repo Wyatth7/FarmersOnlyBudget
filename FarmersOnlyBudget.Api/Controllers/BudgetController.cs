@@ -6,23 +6,17 @@ namespace FarmersOnlyBudget.Api.Controllers;
 
 public class BudgetController(IBudgetService budgetService, IAuthenticatedUserService authenticatedUserService) : BaseApiController
 {
-    [HttpGet("auth")]
-    public async Task<IActionResult> AuthTest()
-    {
-        return new OkObjectResult("You are one authenticated fuck.");
-    }
-    
     [HttpPost("year")]
     public async Task<IActionResult> CreateYearlyBudget([FromBody] YearlyBudgetDto yearlyBudgetDto)
     {
-        var result = await budgetService.CreateYearlyBudget(authenticatedUserService.User.UserId, yearlyBudgetDto.Amount);
+        var result = await budgetService.CreateYearlyBudget(authenticatedUserService.User.UserId, yearlyBudgetDto);
         return new OkObjectResult(result);
     }
 
     [HttpPut("year/{yearlyBudgetId:int:required}")]
     public async Task<IActionResult> EditYearlyBudget(int yearlyBudgetId, [FromBody] YearlyBudgetDto yearlyBudgetDto)
     {
-        var result = await budgetService.EditYearlyBudget(yearlyBudgetId, yearlyBudgetDto.Amount);
+        var result = await budgetService.EditYearlyBudget(yearlyBudgetId, yearlyBudgetDto);
         return new OkObjectResult(result);
     }
     

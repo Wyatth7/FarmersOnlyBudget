@@ -16,4 +16,10 @@ public class SecurityController : BaseApiController
         return new OkObjectResult(new { Token = customToken });
     }
     
+    [HttpGet("test")]
+    public async Task<IActionResult> AuthTest()
+    {
+        return new OkObjectResult("You are one authenticated fuck.");
+    }
+    
 }

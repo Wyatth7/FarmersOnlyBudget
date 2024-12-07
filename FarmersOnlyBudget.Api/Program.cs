@@ -1,9 +1,14 @@
+using System.Reflection;
+using FarmersOnlyBudget.Api.Extensions;
 using FarmersOnlyBudget.Api.Security.Authentication;
 using FarmersOnlyBudget.Api.Services;
 using FirebaseAdmin;
 using Google.Apis.Auth.OAuth2;
+using Mapster;
+using MapsterMapper;
 using Microsoft.EntityFrameworkCore;
 using Persistence;
+using SharpGrip.FluentValidation.AutoValidation.Mvc.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +22,9 @@ FirebaseApp.Create(new AppOptions
 builder.Services.AddAuthentication()
     .AddScheme<FirebaseAuthSchemeOptions, FirebaseAuthSchemeHandler>(AuthenticationSchemes.Firebase, options => { });
 builder.Services.AddScoped<IAuthenticatedUserService, AuthenticatedUserService>();
+
+builder.Services.AddFluentValidation();
+builder.Services.AddFarmersOnlyMapster();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

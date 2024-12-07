@@ -1,13 +1,24 @@
+using FarmersOnlyBudget.Api.Dto;
+using Mapster;
+using Persistence;
+using Persistence.Entities;
+
 namespace FarmersOnlyBudget.Api.Services;
 
-public class BudgetService : IBudgetService
+public class BudgetService(BudgetDbContext dbContext) : IBudgetService
 {
-    public Task<int> CreateYearlyBudget(int userId, decimal amount)
+    public async Task<int> CreateYearlyBudget(int userId, YearlyBudgetDto dto)
     {
-        throw new NotImplementedException();
+        var yearlyBudget = dto.Adapt<YearBudgetEntity>();
+        yearlyBudget.UserId = userId;
+
+        dbContext.YearlyBudgets.Add(yearlyBudget);
+        await dbContext.SaveChangesAsync();
+        
+        return yearlyBudget.YearBudgetId;
     }
 
-    public Task<int> EditYearlyBudget(int yearlyBudgetId, decimal amount)
+    public Task<int> EditYearlyBudget(int yearlyBudgetId, YearlyBudgetDto dto)
     {
         throw new NotImplementedException();
     }
