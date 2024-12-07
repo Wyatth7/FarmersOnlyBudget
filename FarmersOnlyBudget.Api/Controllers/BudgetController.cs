@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace FarmersOnlyBudget.Api.Controllers;
 
-public class BudgetController(IBudgetService budgetService) : BaseApiController
+public class BudgetController(IBudgetService budgetService, IAuthenticatedUserService authenticatedUserService) : BaseApiController
 {
     [HttpGet("auth")]
     public async Task<IActionResult> AuthTest()
@@ -15,7 +15,7 @@ public class BudgetController(IBudgetService budgetService) : BaseApiController
     [HttpPost("year")]
     public async Task<IActionResult> CreateYearlyBudget([FromBody] BudgetAmountDto budgetAmountDto)
     {
-        var result = await budgetService.CreateYearlyBudget(0, budgetAmountDto.Amount);
+        var result = await budgetService.CreateYearlyBudget(authenticatedUserService.User.UserId, budgetAmountDto.Amount);
         return new OkObjectResult(result);
     }
 
