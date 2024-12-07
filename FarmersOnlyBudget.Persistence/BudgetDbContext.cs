@@ -40,6 +40,4 @@ public class BudgetDbContext : DbContext
     public DbSet<BudgetAmountEntity> BudgetAmounts { get; set; }
 
     public DbSet<MonthTypeEntity> MonthTypes { get; set; }
-
-    public DbSet<YearTypeEntity> YearTypes { get; set; }
 }

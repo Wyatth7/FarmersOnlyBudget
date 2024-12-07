@@ -12,19 +12,21 @@ public class YearlyBudgetEntityConfiguration : IEntityTypeConfiguration<YearBudg
 
         builder.HasKey(y => y.YearBudgetId);
 
+        builder.Property(y => y.Year)
+            .HasDefaultValue(0)
+            .HasMaxLength(4)
+            .IsRequired();
+        
         builder.HasOne(y => y.User)
             .WithMany(u => u.YearlyBudgets)
             .HasForeignKey(y => y.UserId)
-            .IsRequired();
-
-        builder.HasOne(y => y.YearType)
-            .WithMany(yt => yt.YearlyBudgets)
-            .HasForeignKey(y => y.YearTypeId)
             .IsRequired();
 
         builder.HasOne(y => y.BudgetAmount)
             .WithMany(b => b.YearlyBudgets)
             .HasForeignKey(y => y.BudgetAmountId)
             .IsRequired();
+
+        builder.HasIndex(y => y.Year);
     }
 }

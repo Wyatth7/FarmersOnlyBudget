@@ -18,7 +18,7 @@ The application will use PostgresSQL for all database operations - may incorpora
 The database design is as follows.
 
 ```mermaid
-erDiagram
+erDiagram;
 
     User ||--o{ YearBudget : has
 

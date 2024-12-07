@@ -13,27 +13,27 @@ public class BudgetController(IBudgetService budgetService, IAuthenticatedUserSe
     }
     
     [HttpPost("year")]
-    public async Task<IActionResult> CreateYearlyBudget([FromBody] BudgetAmountDto budgetAmountDto)
+    public async Task<IActionResult> CreateYearlyBudget([FromBody] YearlyBudgetDto yearlyBudgetDto)
     {
-        var result = await budgetService.CreateYearlyBudget(authenticatedUserService.User.UserId, budgetAmountDto.Amount);
+        var result = await budgetService.CreateYearlyBudget(authenticatedUserService.User.UserId, yearlyBudgetDto.Amount);
         return new OkObjectResult(result);
     }
 
     [HttpPut("year/{yearlyBudgetId:int:required}")]
-    public async Task<IActionResult> EditYearlyBudget(int yearlyBudgetId, [FromBody] BudgetAmountDto budgetAmountDto)
+    public async Task<IActionResult> EditYearlyBudget(int yearlyBudgetId, [FromBody] YearlyBudgetDto yearlyBudgetDto)
     {
-        var result = await budgetService.EditYearlyBudget(yearlyBudgetId, budgetAmountDto.Amount);
+        var result = await budgetService.EditYearlyBudget(yearlyBudgetId, yearlyBudgetDto.Amount);
         return new OkObjectResult(result);
     }
     
     [HttpPost("month")]
-    public async Task<IActionResult> CreateMonthlyBudget([FromBody] BudgetAmountDto budgetAmountDto)
+    public async Task<IActionResult> CreateMonthlyBudget([FromBody] MonthlyBudgetDto monthlyBudgetDto)
     {
         return new OkResult();
     }
 
     [HttpPut("month/{monthlyBudgetId:int:required}")]
-    public async Task<IActionResult> EditMonthlyBudget(int monthlyBudgetId, [FromBody] BudgetAmountDto budgetAmountDto)
+    public async Task<IActionResult> EditMonthlyBudget(int monthlyBudgetId, [FromBody] MonthlyBudgetDto monthlyBudgetDto)
     {
         return new OkResult();
     }
