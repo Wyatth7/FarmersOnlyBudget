@@ -8,7 +8,7 @@ public interface IBudgetService
 
     Task<int> EditYearlyBudget(int yearlyBudgetId, YearlyBudgetDto dto);
 
-    Task<int> CreateMonthlyBudget(int yearlyBudgetId, decimal amount);
+    Task<int> CreateMonthlyBudget(int yearlyBudgetId, MonthlyBudgetDto amount);
 
     Task<int> EditMonthlyBudget(int monthlyBudgetId, decimal amount);
 }

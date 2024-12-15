@@ -1,18 +1,13 @@
-using System.Reflection;
 using FarmersOnlyBudget.Api.Extensions;
 using FarmersOnlyBudget.Api.Security.Authentication;
 using FarmersOnlyBudget.Api.Services;
 using FirebaseAdmin;
 using Google.Apis.Auth.OAuth2;
-using Mapster;
-using MapsterMapper;
 using Microsoft.EntityFrameworkCore;
 using Persistence;
-using SharpGrip.FluentValidation.AutoValidation.Mvc.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 FirebaseApp.Create(new AppOptions
 {
     Credential = await GoogleCredential.GetApplicationDefaultAsync(),

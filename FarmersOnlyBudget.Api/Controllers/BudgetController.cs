@@ -20,10 +20,11 @@ public class BudgetController(IBudgetService budgetService, IAuthenticatedUserSe
         return new OkObjectResult(result);
     }
     
-    [HttpPost("month")]
-    public async Task<IActionResult> CreateMonthlyBudget([FromBody] MonthlyBudgetDto monthlyBudgetDto)
+    [HttpPost("month/{yearlyBudgetId:int:required}")]
+    public async Task<IActionResult> CreateMonthlyBudget([FromRoute] int yearlyBudgetId, [FromBody] MonthlyBudgetDto monthlyBudgetDto)
     {
-        return new OkResult();
+        var result = await budgetService.CreateMonthlyBudget(yearlyBudgetId, monthlyBudgetDto);
+        return new OkObjectResult(result);
     }
 
     [HttpPut("month/{monthlyBudgetId:int:required}")]

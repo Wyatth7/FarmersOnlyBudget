@@ -23,9 +23,15 @@ public class BudgetService(BudgetDbContext dbContext) : IBudgetService
         throw new NotImplementedException();
     }
 
-    public Task<int> CreateMonthlyBudget(int yearlyBudgetId, decimal amount)
+    public async Task<int> CreateMonthlyBudget(int yearlyBudgetId, MonthlyBudgetDto dto)
     {
-        throw new NotImplementedException();
+        var monthlyBudget = dto.Adapt<MonthBudgetEntity>();
+        monthlyBudget.YearBudgetId = yearlyBudgetId;
+
+        dbContext.MonthlyBudgets.Add(monthlyBudget);
+        await dbContext.SaveChangesAsync();
+
+        return monthlyBudget.MonthBudgetId;
     }
 
     public Task<int> EditMonthlyBudget(int monthlyBudgetId, decimal amount)
